@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head('Login')">
+   <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h1 class="card-title text-center mb-4">Welcome Back</h1>
+
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span th:text="${error}"></span>
+                    </div>
+
+                    <div th:if="${message}" class="alert alert-success" role="alert">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span th:text="${message}"></span>
+                    </div>
+
+                    <div th:if="${param.logout}" class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle-fill"></i>
+                        You have been logged out successfully.
+                    </div>
+
+                    <form th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="username"
+                                   name="username" 
+                                   required 
+                                   autofocus
+                                   placeholder="Enter your username" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" 
+                                   class="form-control form-control-lg" 
+                                   id="password"
+                                   name="password" 
+                                   required 
+                                   placeholder="Enter your password" />
+                        </div>
+
+                        <div class="d-grid gap-2 mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </button>
+                        </div>
+                    </form>
+
+                    <hr class="my-4">
+
+                    <div class="text-center">
+                        <p class="mb-2">Don't have an account?</p>
+                        <a th:href="@{/register}" class="btn btn-outline-primary">
+                            <i class="bi bi-person-plus"></i> Create Account
+                        </a>
+                    </div>
+
+                    <div class="mt-4 p-3 bg-light rounded">
+                        <p class="mb-1 fw-bold">Demo Accounts:</p>
+                        <small class="text-muted">
+                            <strong>Admin:</strong> admin / admin123<br>
+                            <strong>User:</strong> user / user123
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head(${post.title})"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <article class="card shadow-lg">
+        <div class="card-body">
+            <h1 class="card-title display-5" th:text="${post.title}">Post Title</h1>
+            <p class="text-muted mb-4">
+                By <span th:text="${post.author != null ? post.author.username : 'Anonymous'}"></span> |
+                <span th:text="${#temporals.format(post.createdAt, 'MMMM dd, yyyy')}"></span>
+            </p>
+
+            <div th:if="${post.imageFilename}" class="text-center mb-4">
+                <img th:src="@{'/uploads/' + ${post.imageFilename}}" class="img-fluid rounded" style="max-width:800px;" alt="Post image" />
+            </div>
+
+            <div class="lead" th:utext="${post.content}">
+                Post content here...
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <a th:href="@{/}" class="btn btn-outline-dark">← Back to Home</a>
+        </div>
+    </article>
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+<img src="images\thymeleaf 1.png" alt="Thymeleaf Logo">
+</footer>
+</body>
+</html>

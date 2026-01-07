@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/header :: head('Admin Dashboard')"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <h1 class="mb-4">
+        <i class="bi bi-speedometer2"></i> Admin Dashboard
+    </h1>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle mb-2 text-white-50">Total Posts</h6>
+                            <h2 class="card-title mb-0" th:text="${totalPosts}">0</h2>
+                        </div>
+                        <i class="bi bi-file-text" style="font-size: 3rem; opacity: 0.5;"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-primary border-0">
+                    <a th:href="@{/admin/posts}" class="text-white text-decoration-none">
+                        View all <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-success shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle mb-2 text-white-50">Welcome</h6>
+                            <h5 class="card-title mb-0" sec:authentication="name">Admin</h5>
+                        </div>
+                        <i class="bi bi-person-circle" style="font-size: 3rem; opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-lightning-charge"></i> Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2 d-md-flex">
+                        <a th:href="@{/admin/posts/new}" class="btn btn-primary btn-lg">
+                            <i class="bi bi-plus-circle"></i> Create New Post
+                        </a>
+                        <a th:href="@{/admin/posts}" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-list-ul"></i> View All Posts
+                        </a>
+                        <a th:href="@{/}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-house-door"></i> Visit Blog
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-info-circle"></i> System Information
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless mb-0">
+                        <tr>
+                            <td class="fw-bold" style="width: 200px;">Current User:</td>
+                            <td sec:authentication="name">admin</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Role:</td>
+                            <td>
+                                <span class="badge bg-danger" sec:authorize="hasAuthority('ROLE_ADMIN')">Administrator</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Access Level:</td>
+                            <td>Full Access - Can create, edit, and delete posts</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

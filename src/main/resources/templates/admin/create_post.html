@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head('Create Post')">
+   <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h1 class="card-title mb-4">
+                        <i class="bi bi-plus-circle"></i> Create New Post
+                    </h1>
+
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span th:text="${error}"></span>
+                    </div>
+
+                    <form th:action="@{/admin/posts}" 
+                          th:object="${post}" 
+                          method="post"
+                          enctype="multipart/form-data">
+                        
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title *</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="title"
+                                   th:field="*{title}" 
+                                   required 
+                                   minlength="3"
+                                   maxlength="150"
+                                   placeholder="Enter an engaging title" />
+                            <div class="form-text">3-150 characters</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="categoryId" class="form-label">Category</label>
+                            <select class="form-select" id="categoryId" name="categoryId">
+                                <option value="">-- Select Category (Optional) --</option>
+                                <option th:each="cat : ${categories}" 
+                                        th:value="${cat.id}" 
+                                        th:text="${cat.name}">
+                                    Category
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Content *</label>
+                            <textarea class="form-control" 
+                                      id="content"
+                                      th:field="*{content}" 
+                                      rows="12" 
+                                      required
+                                      placeholder="Write your blog post content here..."></textarea>
+                            <div class="form-text">Supports HTML formatting</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="image" class="form-label">
+                                <i class="bi bi-image"></i> Featured Image
+                            </label>
+                            <input type="file" 
+                                   class="form-control" 
+                                   id="image"
+                                   name="image" 
+                                   accept="image/*" />
+                            <div class="form-text">Supported formats: JPG, PNG, GIF (Max 5MB)</div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Create Post
+                            </button>
+                            <a class="btn btn-outline-secondary" th:href="@{/admin/posts}">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

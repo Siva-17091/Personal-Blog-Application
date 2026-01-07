@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head('Personal Blog App')"></head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <h1 class="display-4 mb-5 text-center">Latest Posts</h1>
+
+    <form th:action="@{/}" method="get" class="mb-5 max-w-md mx-auto">
+        <div class="input-group">
+            <input type="text" name="q" th:value="${q}" class="form-control" placeholder="Search by title..." />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    <div th:if="${posts.content.isEmpty()}" class="alert alert-info text-center">
+        No blog posts available yet. Be the first to create one!
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div th:each="post : ${posts}" class="col">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div th:if="${post.imageFilename}" class="text-center pt-3">
+                    <img th:src="@{'/uploads/' + ${post.imageFilename}}" class="card-img-top" style="height:200px; object-fit:cover;" alt="Post image" />
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        <a th:href="@{'/post/' + ${post.id}}" class="text-decoration-none" th:text="${post.title}">Post Title</a>
+                    </h5>
+                    <p class="card-text text-muted mt-auto">Posted on <span th:text="${#temporals.format(post.createdAt, 'MMM dd, yyyy')}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav th:if="${posts.totalPages > 1}" class="mt-5">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${!posts.hasPrevious()} ? 'disabled'">
+                <a class="page-link" th:href="@{/(page=${posts.number - 1}, q=${q})}">Previous</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link">Page [[${posts.number + 1}]] of [[${posts.totalPages}]]</span>
+            </li>
+            <li class="page-item" th:classappend="${!posts.hasNext()} ? 'disabled'">
+                <a class="page-link" th:href="@{/(page=${posts.number + 1}, q=${q})}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</main>
+
+<footer th:replace="fragments/footer :: footer">
+<img src="images\thymeleaf 1.png" alt="Thymeleaf Logo">
+</footer>
+</body>
+</html>

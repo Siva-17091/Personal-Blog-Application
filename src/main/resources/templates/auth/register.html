@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head('Register')">
+   <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h1 class="card-title text-center mb-4">Create Account</h1>
+
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span th:text="${error}"></span>
+                    </div>
+
+                    <form th:action="@{/register}" th:object="${user}" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username *</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="username"
+                                   th:field="*{username}" 
+                                   required 
+                                   minlength="3"
+                                   maxlength="50"
+                                   placeholder="Choose a username" />
+                            <div class="form-text">3-50 characters, letters and numbers only</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email"
+                                   th:field="*{email}" 
+                                   required
+                                   placeholder="your@email.com" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password *</label>
+                            <input type="password" 
+                                   class="form-control" 
+                                   id="password"
+                                   th:field="*{password}" 
+                                   required 
+                                   minlength="6"
+                                   placeholder="At least 6 characters" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="form-label">Confirm Password *</label>
+                            <input type="password" 
+                                   class="form-control" 
+                                   id="confirmPassword"
+                                   name="confirmPassword" 
+                                   required 
+                                   minlength="6"
+                                   placeholder="Re-enter your password" />
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-person-plus"></i> Create Account
+                            </button>
+                        </div>
+                    </form>
+
+                    <hr class="my-4">
+
+                    <p class="text-center mb-0">
+                        Already have an account? 
+                        <a th:href="@{/login}" class="text-decoration-none fw-bold">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
