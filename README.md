@@ -7,7 +7,7 @@ user account and view. By, Accessing Admin control you can able to Manage the Po
 
 Front-End: HTML, CSS.
 
-Frameworks: BootStrap and SpringBoot 3.
+Frameworks: BootStrap 5 and SpringBoot 3.
 
 Programming Language: Java 17.
 
