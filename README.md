@@ -6,9 +6,14 @@ user account and view. By, Accessing Admin control you can able to Manage the Po
 ## Technologies Used:
 
 Front-End: HTML, CSS.
+
 Frameworks: BootStrap and SpringBoot 3.
+
 Programming Language: Java 17.
+
 Spring Dependencies: Spring Web, Data JPA, Dev Tools, Validation, MY SQL Driver
 Thymeleaf, Common-IO, Lombok (Getter and Setter).
+
 Database: MY SQL.
+
 Containerization Tools: Docker.
