@@ -35,3 +35,7 @@ Containerization Tools: Docker.
 ## Manage Posts:
 
 ![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/7c31c6d433d57b67ecbcc7cbbc29ef3543a614c1/Manage%20Posts.png)
+
+## Create Posts:
+
+![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/1d917a555f476c97b3d18bb699017eee17cd3891/Create%20Posts.png)
