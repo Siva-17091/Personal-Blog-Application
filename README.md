@@ -18,8 +18,8 @@ Database: MY SQL.
 
 Containerization Tools: Docker.
 
-##Screenshots
+## Screenshots
 
-##Home Page:
+## Home Page:
 
 ![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/c73543b4ad8863fd9234fa764a42a00f4ced9eb1/Home%20Page.png)
