@@ -27,3 +27,7 @@ Containerization Tools: Docker.
 ## Login Page:
 
 ![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/7dc38edc3e6af876512172c4d4fa0e0ec44aa495/Login%20Page.png)
+
+## Admin DashBoard:
+
+![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/8382d2196aa873a7f5c4b90810af711d4e9c79cd/Admin%20Dashboard.png)
