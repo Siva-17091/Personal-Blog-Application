@@ -31,3 +31,7 @@ Containerization Tools: Docker.
 ## Admin DashBoard:
 
 ![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/8382d2196aa873a7f5c4b90810af711d4e9c79cd/Admin%20Dashboard.png)
+
+## Manage Posts:
+
+![image alt](https://github.com/Siva-17091/Personal-Blog-Application/blob/7c31c6d433d57b67ecbcc7cbbc29ef3543a614c1/Manage%20Posts.png)
