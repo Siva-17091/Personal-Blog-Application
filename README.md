@@ -17,3 +17,9 @@ Thymeleaf, Common-IO, Lombok (Getter and Setter).
 Database: MY SQL.
 
 Containerization Tools: Docker.
+
+##Screenshots
+
+##Home Page:
+
+![image alt]()
